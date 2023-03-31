@@ -1,0 +1,14 @@
+.homepage {
+    &__wrapper {
+        counter-reset: section 0;
+        margin: 0px auto;
+        width: 100%;
+        max-width: 1600px;
+        min-height: 100vh;
+        padding: 200px 150px;
+    }
+}
+
+.fillHeight {
+    padding: 0px 150px; //TODO: Update with media query
+}

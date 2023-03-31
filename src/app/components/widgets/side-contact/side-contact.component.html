@@ -1,0 +1,18 @@
+<div class="side-contact__wrapper" [ngClass] = wrapper_class>
+
+    <ul class="side-contact__social_list fade-enter-done" *ngIf="!emailOnly; else elseBlock">
+        <li *ngFor="let profile of social.profiles">
+            <a [href]="profile.href" target="_blank" rel="noreferrer">
+                <div class="side-contact__social_list-svg" [innerHTML]="profile.svg"></div>
+            </a>
+        </li>
+    </ul>
+
+    <ng-template #elseBlock>
+        <div class="side-contact__social_list fade-enter-done">
+            <a class="side-contact__social_list-mail" href="mailto:{{social.mail}}">{{social.mail}}</a>
+        </div>
+    </ng-template>
+
+    
+</div>

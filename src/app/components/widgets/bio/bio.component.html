@@ -1,0 +1,28 @@
+<section class="bio__wrapper">
+  <div class="fadeup-enter-done" style="animation-delay: 100ms">
+    <h1 class="bio__greet">{{ bio.greet }}</h1>
+  </div>
+  <div class="fadeup-enter-done" style="animation-delay: 200ms">
+    <h2 class="big-heading">{{ bio.name }}.</h2>
+  </div>
+  <div
+    class="fadeup-enter-done"
+    style="animation-delay: 300ms; margin-top: 5px"
+  >
+    <h3 class="bio__oneliner big-heading">{{ bio.oneliner }}</h3>
+  </div>
+  <div
+    class="fadeup-enter-done bio__description"
+    style="animation-delay: 400ms"
+  >
+    <p>
+      {{ bio.description }}
+      <span *ngIf="bio.currentOrg">
+        {{ bio.currentOrg.onelinerJD }} at
+        <a [href]="bio.currentOrg.webpage" class="a__highlighted_underlined" target="_blank" rel="noreferrer">{{
+          bio.currentOrg.name
+        }}</a> </span
+      >.
+    </p>
+  </div>
+</section>

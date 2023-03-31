@@ -3,10 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomePageComponent } from './components/pages/home-page/home-page.component';
+import { HeaderComponent } from './components/widgets/header/header.component';
+import { SideContactComponent } from './components/widgets/side-contact/side-contact.component';
+import { BioComponent } from './components/widgets/bio/bio.component';
+import { AboutComponent } from './components/widgets/about/about.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomePageComponent,
+    HeaderComponent,
+    SideContactComponent,
+    BioComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
