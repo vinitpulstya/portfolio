@@ -4,10 +4,10 @@ export interface Bio {
     oneliner: String,
     description: String,
     currentOrg: undefined | CurrentOrg
-}
+};
 
 interface CurrentOrg {
     webpage: String,
     name: String,
     onelinerJD: String
-}
+};
