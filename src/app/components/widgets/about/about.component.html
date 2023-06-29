@@ -15,16 +15,27 @@
     <div>
       <div>
         <p>
-          Hello! My name is {{ aboutStaticData.name }} and {{ aboutStaticData.description }}
+          Hello! My name is {{ aboutStaticData.name }} and
+          {{ aboutStaticData.description }}
         </p>
         <p>
-          <span *ngIf="aboutStaticData.notableExperiences.length"> Fast-forward to today, and I’ve had the privilege of working at </span>
-          <a *ngFor="let notable_experience of aboutStaticData.notableExperiences; let i=index"
-          class="a__highlighted_underlined"
-            [href]= "notable_experience.href"
+          <span *ngIf="aboutStaticData.notableExperiences.length">
+            Fast-forward to today, and I’ve had the privilege of working at
+          </span>
+          <a
+            *ngFor="
+              let notable_experience of aboutStaticData.notableExperiences;
+              let i = index
+            "
+            class="a__highlighted_underlined"
+            [href]="notable_experience.href"
             rel="noopener noreferrer"
-            target="_blank">
-            {{ notable_experience.display_text }}{{i === aboutStaticData.notableExperiences.length - 1 ? "." : ","}}
+            target="_blank"
+          >
+            {{ notable_experience.display_text
+            }}{{
+              i === aboutStaticData.notableExperiences.length - 1 ? "." : ","
+            }}
           </a>
           My main focus these days is building accessible, inclusive products
           and digital experiences at
@@ -33,7 +44,7 @@
             [href]="aboutStaticData.currentExperience.href"
             rel="noopener noreferrer"
             target="_blank"
-            >{{aboutStaticData.currentExperience.name}}</a
+            >{{ aboutStaticData.currentExperience.name }}</a
           >
           for a variety of clients.
         </p>
@@ -51,13 +62,18 @@
         <p>Here are a few technologies I’ve been working with recently:</p>
       </div>
       <ul class="about__skills-list">
-        <li class="about__skills-list-li" *ngFor="let skill of aboutStaticData.skills">{{ skill }}</li>
+        <li
+          class="about__skills-list-li"
+          *ngFor="let skill of aboutStaticData.skills"
+        >
+          {{ skill }}
+        </li>
       </ul>
     </div>
     <div class="about__styledPic positioner">
       <div class="about__styledPic-wrapper">
-        <div class="about__image-wrapper">
-          <div style="max-width: 500px; display: block">
+        <div class="about__styledPic-wrapper-inner">
+          <div style="max-width: 500px; display: block"> 
             <img
               alt=""
               role="presentation"
@@ -78,7 +94,6 @@
               object-fit: cover;
             "
           ></div>
-          <!-- <img src="/src/assets/images/pic.jpg"/> -->
           <picture>
             <!-- <source
               type="image/avif"
@@ -110,9 +125,14 @@
               "
               alt="Headshot"
               style="object-fit: cover; opacity: 1" /> -->
-          <img src="../../../../assets/images/pic.jpg" width="500"
-          height="500" alt="Headshot" style="object-fit: cover; opacity: 1"/>
-              </picture>
+            <img
+              src="../../../../assets/images/pic.jpg"
+              width="500"
+              height="500"
+              alt="Headshot"
+              style="object-fit: cover; opacity: 1"
+            />
+          </picture>
           <!-- <noscript></noscript> -->
         </div>
       </div>

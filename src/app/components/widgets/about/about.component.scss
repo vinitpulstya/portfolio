@@ -67,26 +67,47 @@
             &:hover, &:focus {
                 outline: 0px;
                 box-shadow: 0 20px 30px -15px var(--navy-shadow);
+                transform: translate(-4px, -4px);
+                .about__styledPic-wrapper-inner {
+                    filter: none;
+                    mix-blend-mode: normal;
+                }
                 &::after {
                     top: 15px;
                     left: 15px;
+                    // transform: translate(8px, 8px);
+                    transform: translate(12px, 12px);
                 }
+                
+            }
+
+            &-inner {
+                position: relative;
+                border-radius: var(--border-radius);
+                mix-blend-mode: multiply;
+                filter: grayscale(100%) contrast(1);
+                transition: var(--transition);
+                display: inline-block;
+                overflow: hidden;
+                width: 100%;
+                max-width: 100%;
+                vertical-align: middle;
             }
         }
     }
 
-    &__image-wrapper {
-        position: relative;
-        border-radius: var(--border-radius);
-        mix-blend-mode: multiply;
-        filter: grayscale(100%) contrast(1);
-        transition: var(--transition);
-        display: inline-block;
-        overflow: hidden;
-        width: 100%;
-        max-width: 100%;
-        vertical-align: middle;
-    }
+    // &__image-wrapper {
+    //     position: relative;
+    //     border-radius: var(--border-radius);
+    //     mix-blend-mode: multiply;
+    //     filter: grayscale(100%) contrast(1);
+    //     transition: var(--transition);
+    //     display: inline-block;
+    //     overflow: hidden;
+    //     width: 100%;
+    //     max-width: 100%;
+    //     vertical-align: middle;
+    // }
 }
 
 .positioner {

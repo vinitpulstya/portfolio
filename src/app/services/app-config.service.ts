@@ -21,7 +21,7 @@ export class AppConfigService {
       name: "Tata Consultancy Services",
       acronym: "TCS",
       href: "https://tcs.com/",
-    }
+    },
   };
 
   public readonly social: Social = {
@@ -29,17 +29,17 @@ export class AppConfigService {
       {
         href: 'https://github.com/vinitpulstya',
         label: 'Github',
-        svg: this.svgDict.github,
+        svg: this._svgDict.github,
       },
       {
         href: 'https://www.instagram.com/pulstya_vinit',
         label: 'Instagram',
-        svg: this.svgDict.instagram,
+        svg: this._svgDict.instagram,
       },
       {
         href: 'https://www.linkedin.com/in/vinitpulstya',
         label: 'LinkedIn',
-        svg: this.svgDict.linkedin,
+        svg: this._svgDict.linkedin,
       },
     ],
     mail: 'vinitsharma9876@gmail.com',
@@ -70,5 +70,5 @@ export class AppConfigService {
     skills: ["JavaScript", "React", "Angular", "Flask", "Node.js", "TypeScript", "AWS", "HTML", "CSS", "SCSS", "Python"]
   }
 
-  constructor(private svgDict: SvgSafehtmlService) {}
+  constructor(private _svgDict: SvgSafehtmlService) {}
 }
