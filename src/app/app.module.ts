@@ -9,6 +9,7 @@ import { SideContactComponent } from './components/widgets/side-contact/side-con
 import { BioComponent } from './components/widgets/bio/bio.component';
 import { AboutComponent } from './components/widgets/about/about.component';
 import { JobsComponent } from './components/widgets/jobs/jobs.component';
+import { ProjectsComponent } from './components/widgets/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { JobsComponent } from './components/widgets/jobs/jobs.component';
     BioComponent,
     AboutComponent,
     JobsComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,
