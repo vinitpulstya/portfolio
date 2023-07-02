@@ -10,6 +10,7 @@ import { BioComponent } from './components/widgets/bio/bio.component';
 import { AboutComponent } from './components/widgets/about/about.component';
 import { JobsComponent } from './components/widgets/jobs/jobs.component';
 import { ProjectsComponent } from './components/widgets/projects/projects.component';
+import { ContactComponent } from './components/widgets/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ProjectsComponent } from './components/widgets/projects/projects.compon
     AboutComponent,
     JobsComponent,
     ProjectsComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
