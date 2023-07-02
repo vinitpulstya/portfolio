@@ -1,0 +1,20 @@
+.footer {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    min-height: 70px;
+    padding: 15px;
+    text-align: center;
+
+    &__credit {
+        color: var(--light-slate);
+        font-family: var(--font-mono);
+        font-size: var(--fz-xxs);
+        line-height: 1;
+        margin-bottom: 1rem;
+    }
+}
