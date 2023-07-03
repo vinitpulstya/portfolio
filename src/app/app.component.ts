@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppConfigService } from './services/app-config.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'portfolio_2.0';
+  constructor(private _appConfig: AppConfigService) {}
+  title = `${this._appConfig.bio.name}`;
 }
