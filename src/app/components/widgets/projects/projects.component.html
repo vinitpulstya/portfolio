@@ -14,6 +14,7 @@
   </h2>
   <ul class="featured__StyledProjectsGrid">
     <li
+		*ngFor="let project of projects"
       class="featured__StyledProject"
       style="
         visibility: visible;
@@ -28,57 +29,25 @@
           <p class="featured__StyledProject-overline">Featured Project</p>
           <h3 class="featured__StyledProject-title">
             <a
-              href="https://halcyon-theme.netlify.com/"
+              [href]="project.external_link"
               rel="noopener noreferrer"
               target="_blank"
-              >Halcyon Theme</a
+              >{{project.name}}</a
             >
           </h3>
           <div class="featured__StyledProject-description">
             <p>
-              A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm,
-              and more. Available on
-              <a
-                href="https://marketplace.visualstudio.com/items?itemName=brittanychiang.halcyon-vscode"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Visual Studio Marketplace</a
-              >,
-              <a
-                href="https://packagecontrol.io/packages/Halcyon%20Theme"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Package Control</a
-              >,
-              <a
-                href="https://atom.io/themes/halcyon-syntax"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Atom Package Manager</a
-              >, and
-              <a
-                href="https://www.npmjs.com/package/hyper-halcyon-theme"
-                target="_blank"
-                rel="noopener noreferrer"
-                >npm</a
-              >.
+             {{project.description}}
             </p>
           </div>
           <ul class="featured__StyledProject-tech-list">
-            <li>VS Code</li>
-            <li>Sublime Text</li>
-            <li>Atom</li>
-            <li>iTerm2</li>
-            <li>Hyper</li>
+            <li *ngFor="let tool of project.tools">{{tool}}</li>
           </ul>
           <div class="featured__StyledProject-links">
-            <!-- <a [href]="profile.href" target="_blank" rel="noreferrer">
-                <div class="side-contact__social_list-svg" [innerHTML]="profile.svg"></div>
-            </a> -->
-			<a href="https://github.com/vinitpulstya" target="_blank" rel="noreferrer">
+			<a [href]="project.github" target="_blank" rel="noreferrer">
                 <div class="featured__StyledProject-links-svg" [innerHTML]="github"></div>
             </a>
-			<a href="https://openapi1.netlify.app/" target="_blank" rel="noreferrer">
+			<a [href]="project.external_link" target="_blank" rel="noreferrer">
                 <div class="featured__StyledProject-links-svg" [innerHTML]="external"></div>
             </a>
           </div>
@@ -86,7 +55,7 @@
       </div>
       <div class="featured__StyledProject-image">
         <a
-          href="https://openapi1.netlify.app/"
+          [href]="project.external_link"
           rel="noopener noreferrer"
           target="_blank"
           ><div
@@ -101,27 +70,16 @@
                 style="max-width: 100%; display: block; position: static"
               />
             </div>
-            <img
-              aria-hidden="true"
-              data-placeholder-image=""
-              decoding="async"
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACBklEQVQoz23O7W6bMBQGYO5iSoEY7GBjY2MwH/6AJk3SrStVlQbabJq23f9lTCRR1x+VHllH57zHtie76VOZmbidhDuf9vOMl7vxgyl3k7Bj2b/uH093D6dm89rfv3X7N2Gny/Rj3hP2+J+Zcf2iuvHv7x/jdHo5vv359fM4nrL2Ov2Y94R5eSfdUXZj4UbpRqaP3BxzN3Izk+4qn9+45j2uD1wfhDlwc5BuLLqp6Maz6XLLpX4vcnvk5zA3B4+3z0I/0XpgzROrh7Sa0Xq4dLL2Oa0er+qBzc2B1XOeNoPH6iHhOiblTSQT0SNuAFE+Uj4sfVjG1CTCkWIdEwNQuYjLm7j0oQqQiqjziHpIWJPr9ZI6IDa0vaftGkoXi36ZuiXRMe9w+ZVXD7zdFlUPM+OjClJDilsvVd8xazBvF7EE1LF6l5s9re6R3GK5BakNsUGpw/ldVN5JZRKpfVQBXENmPVJ+A6hEpFlEwk8aLG+pcii3ATbBqvGhilKbFDuidqxaA96F2IH5RyYkxlvJPYhFKjdLogOssVpz2ydNH3MN0yZMKjAvb0W9E/WGlBvIbudNrENqvVW+A7Egol/AMsQaFWskWsRNIjrITLCqQGri1BLek9zBrLmBlT9Ty6T1VmIbRDxaqS9hFiRNgFsf1T6q3oHUQNbHqQXMwsxA2kbUAKLDpP0H4Daf056mKVMAAAAASUVORK5CYII="
-              alt=""
-              style="
-                opacity: 0;
-                transition: opacity 500ms linear 0s;
-                object-fit: cover;
-              "
-            /><picture
+			<picture
               >
               <img
                 width="700"
                 height="438"
                 sizes="(min-width: 700px) 700px, 100vw"
                 decoding="async"
-                src="../../../../assets/images/open-api.jpg"
-                alt="Open API"
-                style="object-fit: cover; opacity: 1; border-radius: 4px;" /></picture
+				[src] = "project.image_src"
+                [alt]="project.name"
+                style="object-fit: fill; opacity: 1; border-radius: 4px;" /></picture
             ><noscript></noscript></div
         ></a>
       </div>
