@@ -1,6 +1,8 @@
+@import "/src/assets/static/mixins";
+
 .header {
   &__wrapper {
-    padding: 0px 40px; //TO DO: padding should change on basis of media queries
+    padding: 0rem 4rem;
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
@@ -9,15 +11,17 @@
     position: fixed;
     top: 0px;
     z-index: 11;
-    padding: 0px 50px;
     width: 100%;
     height: var(--nav-height);
     background-color: rgba(10, 25, 47, 0.85);
     backdrop-filter: blur(10px);
     transition: var(--transition);
-    filter: none !important;
     pointer-events: auto !important;
     user-select: auto !important;
+
+    @include respond(phone) {
+      padding: 0rem 2rem;
+    }
   }
 
   &__nav {
@@ -33,13 +37,13 @@
     counter-reset: item 0;
     z-index: 12;
 
-    &-nav {
-      display: flex;
-      -webkit-box-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      align-items: center;
-    }
+    // &-nav {
+    //   display: flex;
+    //   -webkit-box-pack: center;
+    //   justify-content: center;
+    //   -webkit-box-align: center;
+    //   align-items: center;
+    // }
 
     &-links {
       display: flex;
@@ -75,7 +79,6 @@
         }
       }
     }
-
     &-resume_button {
         color: var(--green);
         background-color: transparent;
