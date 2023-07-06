@@ -169,34 +169,6 @@
         margin: 1rem;
       }
 
-      &__link {
-        &:link,
-        &:visited {
-          display: inline-block;
-          font-size: 3rem;
-          font-weight: 300;
-          padding: 1rem 2rem;
-          color: white;
-          text-decoration: none;
-          text-transform: uppercase;
-          background-image: linear-gradient(
-            120deg,
-            transparent 0%,
-            transparent 50%,
-            white 50%
-          );
-          background-size: 250%;
-          transition: all 0.4s;
-        }
-
-        &:hover,
-        &:active {
-          background-position: 100%;
-          color: var(--green);
-          transform: translateX(1rem);
-        }
-      }
-
       // FUNCTIONALITY
       &__checkbox:checked ~ &__background {
         transform: scale(90);

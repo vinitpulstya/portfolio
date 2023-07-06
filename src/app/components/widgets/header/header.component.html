@@ -34,7 +34,7 @@
       <div class="header__navsm__background">&nbsp;</div>
       <div class="header__navsm__nav">
         <ol class="header__navsm__list">
-          <li class="header__navsm__link" *ngFor="let link of navlinks">
+          <li class="header__navsm__item" *ngFor="let link of navlinks">
             <a [href]="link.href" (click) = "handleMenuClick()">{{ link.display_text }}</a>
           </li>
         </ol>
