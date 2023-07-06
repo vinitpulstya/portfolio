@@ -1,21 +1,19 @@
 <div class="header__wrapper">
   <nav class="header__nav">
-    <div class="header__nav-logo fadedown-enter-done" style="animation-delay: 0ms">
+    <div
+      class="header__nav-logo fadedown-enter-done"
+      style="animation-delay: 0ms"
+    >
       <a href="/#">Vinit</a>
     </div>
     <div class="header__nav-links">
       <ol>
-        <li class="fadedown-enter-done" style="animation-delay: 0ms">
-          <a href="/#about">About</a>
-        </li>
-        <li class="fadedown-enter-done" style="animation-delay: 100ms">
-          <a href="/#jobs">Experience</a>
-        </li>
-        <li class="fadedown-enter-done" style="animation-delay: 200ms">
-          <a href="/#projects">Work</a>
-        </li>
-        <li class="fadedown-enter-done" style="animation-delay: 300ms">
-          <a href="/#contact">Contact</a>
+        <li
+          *ngFor="let link of navlinks"
+          class="fadedown-enter-done"
+          [style]="link.style"
+        >
+          <a [href]="link.href">{{ link.display_text }}</a>
         </li>
       </ol>
       <div class="fadedown-enter-done" style="animation-delay: 400ms">
@@ -28,23 +26,19 @@
         >
       </div>
     </div>
+    <div class="header__navsm">
+      <input class="header__navsm__checkbox" type="checkbox" [checked]="showMenu" id="menu-btn" />
+      <label class="header__navsm__button" (click)="handleMenuClick()">
+        <span class="header__navsm__icon">&nbsp;</span>
+      </label>
+      <div class="header__navsm__background">&nbsp;</div>
+      <div class="header__navsm__nav">
+        <ol class="header__navsm__list">
+          <li class="header__navsm__link" *ngFor="let link of navlinks">
+            <a [href]="link.href" (click) = "handleMenuClick()">{{ link.display_text }}</a>
+          </li>
+        </ol>
+      </div>
+    </div>
   </nav>
 </div>
-
-
-<!-- <div class="navigation">
-  <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
-  <label for="navi-toggle" class="navigation__button">
-      <span class="navigation__icon">&nbsp;</span>
-  </label>
-  <div class="navigation__background">&nbsp;</div>
-
-  <nav class="navigation__nav">
-      <ul class="navigation__list">
-          <li class="navigation__item"><a href="/#about" class="navigation__link">About</a></li>
-          <li class="navigation__item"><a href="/#jobs" class="navigation__link">Experience</a></li>
-          <li class="navigation__item"><a href="/#projects" class="navigation__link">Work</a></li>
-          <li class="navigation__item"><a href="/#contact" class="navigation__link">Contact</a></li>
-      </ul>
-  </nav>
-</div> -->
