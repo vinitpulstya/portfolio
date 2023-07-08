@@ -254,7 +254,7 @@ h6 {
 .inner {
   display: grid;
   grid-template-columns: 3fr 2fr;
-  gap: 50px;
+  gap: 5rem;
 
   @include respond(phone) {
     display: flex;
