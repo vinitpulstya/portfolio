@@ -1,9 +1,15 @@
+@import "/src/assets/static/mixins";
+
 .jobs {
 //   &__section {
 //   }
 
   &__inner {
     display: flex;
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
   }
 
   &__tablist {
@@ -13,6 +19,10 @@
     padding: 0px;
     margin: 0px;
     list-style: none;
+
+    @include respond(phone) {
+      display: flex;
+    }
 
     &-btn {
       text-decoration: none;

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { About } from '../models/about-model';
 import { Bio } from '../models/bio-model';
-import { Experience } from '../models/experience-model';
 import { Social } from '../models/social-model';
 import { SvgSafehtmlService } from './svg-safehtml.service';
 import { Project } from '../models/project-model';
+import { Job } from '../models/job-model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +15,25 @@ export class AppConfigService {
   private readonly lastName: String = 'Sharma';
   private readonly fullName: String = `${this.firstName} ${this.middleName} ${this.lastName}`;
 
-  private readonly WorkExp = {
-    tcs: {
+  // Array order latest to old
+  public readonly WorkExp: Array<Job> = [
+    {
       name: 'Tata Consultancy Services',
       acronym: 'TCS',
       href: 'https://tcs.com/',
+      start_date: 'March 2021',
+      end_date: 'Present',
+      title: 'Developer',
+      noteworthy_tasks: [
+        'Worked closely with DevOps to migrate a high-resolution image viewing application from on-premises to CaaS',
+        'Successfully developed and delivered two access management applications for AWS and corporate LDAP using Angular with over 95% customer satisfaction rating.',
+        'Developed REST APIs for aforementioned web applications on AWS using python. Used S3, API gateway, CloudFront, AWS lambda, SES and Step functions for the same',
+        'Developed a blogging application using MEAN stack during training and also developed UI for an application using Angular that fetched data from JIRA and displayed it in graphical format.',
+        'Recognized as a contextual master in TCS due to my successful and efficient project execution that brought value to the customer.',
+        'Migrated code-repositories from bitbucket to GitLab.',
+      ],
     },
-  };
+  ];
 
   public readonly social: Social = {
     profiles: [
@@ -51,8 +63,8 @@ export class AppConfigService {
     description:
       'I’m a software engineer specializing in building exceptional digital experiences.',
     currentOrg: {
-      name: this.WorkExp.tcs.name,
-      webpage: this.WorkExp.tcs.href,
+      name: this.WorkExp[0].name,
+      webpage: this.WorkExp[0].href,
       onelinerJD: 'Currently, I’m focused on driving innovation',
     },
   };
@@ -66,7 +78,7 @@ export class AppConfigService {
     notableExperiences: [
       // {...this.WorkExp.tcs, display_text: "a consultancy company"}
     ],
-    currentExperience: this.WorkExp.tcs,
+    currentExperience: this.WorkExp[0],
     skills: [
       'JavaScript',
       'React',
