@@ -14,7 +14,7 @@
   </h2>
   <ul class="featured__StyledProjectsGrid">
     <li
-		*ngFor="let project of projects"
+      *ngFor="let project of projects"
       class="featured__StyledProject"
       style="
         visibility: visible;
@@ -32,23 +32,29 @@
               [href]="project.external_link"
               rel="noopener noreferrer"
               target="_blank"
-              >{{project.name}}</a
+              >{{ project.name }}</a
             >
           </h3>
           <div class="featured__StyledProject-description">
             <p>
-             {{project.description}}
+              {{ project.description }}
             </p>
           </div>
           <ul class="featured__StyledProject-tech-list">
-            <li *ngFor="let tool of project.tools">{{tool}}</li>
+            <li *ngFor="let tool of project.tools">{{ tool }}</li>
           </ul>
           <div class="featured__StyledProject-links">
-			<a [href]="project.github" target="_blank" rel="noreferrer">
-                <div class="featured__StyledProject-links-svg" [innerHTML]="github"></div>
+            <a [href]="project.github" target="_blank" rel="noreferrer">
+              <div
+                class="featured__StyledProject-links-svg"
+                [innerHTML]="github"
+              ></div>
             </a>
-			<a [href]="project.external_link" target="_blank" rel="noreferrer">
-                <div class="featured__StyledProject-links-svg" [innerHTML]="external"></div>
+            <a [href]="project.external_link" target="_blank" rel="noreferrer">
+              <div
+                class="featured__StyledProject-links-svg"
+                [innerHTML]="external"
+              ></div>
             </a>
           </div>
         </div>
@@ -58,9 +64,7 @@
           [href]="project.external_link"
           rel="noopener noreferrer"
           target="_blank"
-          ><div
-            class="featured__StyledProject-image-img"
-          >
+          ><div class="featured__StyledProject-image-img">
             <div style="max-width: 700px; display: block">
               <img
                 alt=""
@@ -70,16 +74,19 @@
                 style="max-width: 100%; display: block; position: static"
               />
             </div>
-			<picture
-              >
+            <picture>
               <img
                 width="700"
                 height="438"
                 sizes="(min-width: 700px) 700px, 100vw"
                 decoding="async"
-				[src] = "project.image_src"
+                [src]="project.image_src"
                 [alt]="project.name"
-                style="object-fit: fill; opacity: 1; border-radius: 4px;" /></picture
+                style="
+                  object-fit: fill;
+                  opacity: 1;
+                  border-radius: 4px;
+                " /></picture
             ><noscript></noscript></div
         ></a>
       </div>
