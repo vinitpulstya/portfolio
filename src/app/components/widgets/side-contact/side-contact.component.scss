@@ -1,77 +1,86 @@
+@import "/src/assets/static/mixins";
+
 .side-contact {
-    &__wrapper {
-        &-left {
-            left: 20px;
-            right: auto;
-        }
-
-        &-right {
-            left: auto;
-            right: 20px;
-        }
-        width: 40px;
-        position: fixed;
-        bottom: 0px;
-        left: 40px;
-        right: auto;
-        z-index: 10;
-        color: var(--light-slate);
+  &__wrapper {
+    &-left {
+      left: 2rem;
+      right: auto;
     }
 
-    &__social_list {
-        display: flex;
-        flex-direction: column;
-        -webkit-box-align: center;
-        align-items: center;
-        margin: 0px;
-        padding: 0px;
-        list-style: none;
-
-        &::after {
-            content: "";
-            display: block;
-            width: 1px;
-            height: 90px;
-            margin: 0px auto;
-            background-color: var(--light-slate);
-        }
-        li {
-            a {
-                padding: 10px;
-
-                // svg {
-                //     width: 20px;
-                //     height: 20px;
-                //     vertical-align: middle;
-                //     max-width: 100%;
-
-                //     &.feather {
-                //         fill: none;
-                //     }
-                // }
-            }
-        }
-
-        &-svg {
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
-            max-width: 100%;
-
-            &.feather {
-                fill: none;
-            }
-        }
-
-        &-mail {
-            margin: 20px auto;
-            padding: 10px;
-            font-family: var(--font-mono);
-            font-size: var(--fz-xxs);
-            line-height: var(--fz-lg);
-            letter-spacing: 0.1em;
-            -webkit-writing-mode: vertical-rl;
-            writing-mode: vertical-rl;
-        }
+    &-right {
+      left: auto;
+      right: 2rem;
     }
+    @include respond(phone) {
+      display: none;
+    }
+    width: 4rem;
+    position: fixed;
+    bottom: 0px;
+    left: 4rem;
+    right: auto;
+    z-index: 10;
+    color: var(--light-slate);
+  }
+
+  &__social_list {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+
+    @include respond(phone) {
+      flex-direction: row;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 9rem;
+      margin: 0px auto;
+      background-color: var(--light-slate);
+    }
+    li {
+      a {
+        padding: 10px;
+
+        // svg {
+        //     width: 20px;
+        //     height: 20px;
+        //     vertical-align: middle;
+        //     max-width: 100%;
+
+        //     &.feather {
+        //         fill: none;
+        //     }
+        // }
+      }
+    }
+
+    &-svg {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      max-width: 100%;
+
+      &.feather {
+        fill: none;
+      }
+    }
+
+    &-mail {
+      margin: 2rem auto;
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: var(--fz-xxs);
+      line-height: var(--fz-lg);
+      letter-spacing: 0.1rem;
+      -webkit-writing-mode: vertical-rl;
+      writing-mode: vertical-rl;
+    }
+  }
 }

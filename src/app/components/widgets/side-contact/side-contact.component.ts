@@ -10,7 +10,7 @@ export class SideContactComponent implements OnInit {
   @Input() orientation: string | undefined;
   @Input() emailOnly: boolean = false;
   public wrapper_class: string = '';
-  public readonly social = this.appConfig.social;
+  public readonly social = this._appConfig.social;
 
   ngOnInit() {
     this.wrapper_class = `side-contact__wrapper${
@@ -18,5 +18,5 @@ export class SideContactComponent implements OnInit {
     }`;
   }
 
-  constructor(public appConfig: AppConfigService) {}
+  constructor(private _appConfig: AppConfigService) {}
 }

@@ -1,5 +1,14 @@
 <footer class="footer">
     <div class="footer__credit">
+        <ul class="footer__social_list fade-enter-done">
+            <li *ngFor="let profile of social.profiles">
+                <a [href]="profile.href" target="_blank" rel="noreferrer">
+                    <div class="footer__social_list-svg" [innerHTML]="profile.svg"></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="footer__credit">
         Built by <a href="">Vinit Sharma</a> 
     </div>
     <div class="footer__credit">
