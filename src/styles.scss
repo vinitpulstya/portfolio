@@ -255,6 +255,11 @@ h6 {
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 50px;
+
+  @include respond(phone) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 img {
