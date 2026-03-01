@@ -37,7 +37,15 @@
           <li class="header__navsm__item" *ngFor="let link of navlinks">
             <a [href]="link.href" (click) = "handleMenuClick()">{{ link.display_text }}</a>
           </li>
-        </ol>
+          <li>
+            <a
+            href="../../../../assets/Vinit Sharma.pdf"
+            target="_self"
+            download
+            >Resume</a
+          >
+          </li>
+        </ol>          
       </div>
     </div>
   </nav>
