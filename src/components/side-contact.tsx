@@ -10,12 +10,12 @@ export function SideContact({ orientation, emailOnly }: SideContactProps) {
   const wrapperClass = orientation === "left" ? "left-8 right-auto" : "left-auto right-8";
 
   return (
-    <div className={`fixed bottom-0 z-10 hidden w-16 text-[#a8b2d1] min-[601px]:block ${wrapperClass}`}>
+    <div className={`fixed bottom-0 z-10 hidden w-16 text-secondary xl:block ${wrapperClass}`}>
       {!emailOnly ? (
-        <ul className="fade-enter-done m-0 flex list-none flex-col items-center p-0 after:mx-auto after:mt-0 after:block after:h-36 after:w-px after:bg-[#a8b2d1] after:content-['']">
+        <ul className="m-0 flex list-none flex-col items-center p-0 after:mx-auto after:mt-0 after:block after:h-24 after:w-px after:bg-secondary after:content-['']">
           {social.profiles.map((profile) => (
             <li key={profile.href}>
-              <a href={profile.href} target="_blank" rel="noreferrer" className="p-2.5">
+              <a href={profile.href} target="_blank" rel="noreferrer" className="p-3 mb-2 block hover:-translate-y-1 hover:text-primary transition-all duration-300">
                 <span className="inline-flex h-5 w-5 max-w-full align-middle [&_svg]:h-5 [&_svg]:w-5">
                   <Icon name={profile.icon} />
                 </span>
@@ -24,8 +24,8 @@ export function SideContact({ orientation, emailOnly }: SideContactProps) {
           ))}
         </ul>
       ) : (
-        <div className="fade-enter-done m-0 flex list-none flex-col items-center p-0 after:mx-auto after:mt-0 after:block after:h-36 after:w-px after:bg-[#a8b2d1] after:content-['']">
-          <a className="m-8 p-4 font-mono text-[1.2rem] leading-[1.6rem] tracking-[0.1rem] [writing-mode:vertical-rl]" href={`mailto:${social.mail}`}>
+        <div className="m-0 flex list-none flex-col items-center p-0 after:mx-auto after:mt-0 after:block after:h-24 after:w-px after:bg-secondary after:content-['']">
+          <a className="m-8 p-4 font-mono text-sm leading-none tracking-widest hover:-translate-y-1 hover:text-primary transition-all duration-300" style={{ writingMode: "vertical-rl" }} href={`mailto:${social.mail}`}>
             {social.mail}
           </a>
         </div>
