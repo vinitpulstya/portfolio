@@ -144,8 +144,8 @@ export const projects: Project[] = [
 ];
 
 export const navLinks: NavLink[] = [
-  { href: "/#about", displayText: "About", animationDelayMs: 0 },
-  { href: "/#jobs", displayText: "Experience", animationDelayMs: 100 },
-  { href: "/#projects", displayText: "Work", animationDelayMs: 200 },
-  { href: "/#contact", displayText: "Contact", animationDelayMs: 300 },
+  { href: "#about", displayText: "About", animationDelayMs: 0 },
+  { href: "#jobs", displayText: "Experience", animationDelayMs: 100 },
+  { href: "#projects", displayText: "Work", animationDelayMs: 200 },
+  { href: "#contact", displayText: "Contact", animationDelayMs: 300 },
 ];

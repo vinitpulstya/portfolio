@@ -5,12 +5,13 @@ import { SideContact } from "@/components/side-contact";
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CursorTracker } from "@/components/cursor-tracker";
+import { withBasePath } from "@/lib/base-path";
 
 export const metadata: Metadata = {
   title: "Vinit Sharma | Portfolio",
   description: "Software engineer portfolio",
   icons: {
-    icon: "/images/pic.jpg",
+    icon: withBasePath("/images/pic.jpg"),
   },
 };
 

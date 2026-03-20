@@ -3,6 +3,7 @@
 import { projects } from "@/lib/portfolio-data";
 import { Icon } from "@/lib/icons";
 import { motion } from "framer-motion";
+import { withBasePath } from "@/lib/base-path";
 
 export function ProjectsSection() {
   return (
@@ -48,7 +49,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
         <a href={project.externalLink} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
-            src={project.imageSrc} 
+            src={withBasePath(project.imageSrc)} 
             alt={project.name} 
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
           />

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { about } from "@/lib/portfolio-data";
 import { Icon } from "@/lib/icons";
+import { withBasePath } from "@/lib/base-path";
 
 export function AboutSection() {
   return (
@@ -46,7 +47,7 @@ export function AboutSection() {
           <div className="absolute inset-0 bg-primary/40 mix-blend-overlay z-10 transition-opacity duration-300 group-hover:opacity-0" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
-            src="/images/pic.jpg" 
+            src={withBasePath("/images/pic.jpg")} 
             alt={about.name} 
             className="w-full h-full object-cover rounded-2xl grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110" 
           />
