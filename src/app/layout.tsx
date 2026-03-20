@@ -9,13 +9,16 @@ import { CursorTracker } from "@/components/cursor-tracker";
 export const metadata: Metadata = {
   title: "Vinit Sharma | Portfolio",
   description: "Software engineer portfolio",
+  icons: {
+    icon: "/images/pic.jpg",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-background text-foreground transition-colors duration-300">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <CursorTracker />
           <Header />
           <SideContact orientation="left" emailOnly={false} />

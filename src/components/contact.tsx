@@ -7,9 +7,8 @@ export function ContactSection() {
   return (
     <motion.section 
       id="contact" 
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      initial={false}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className="mx-auto mb-24 max-w-2xl text-center py-24 md:py-32"
     >

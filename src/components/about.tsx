@@ -1,76 +1,77 @@
 "use client";
 
-import { about } from "@/lib/portfolio-data";
 import { motion } from "framer-motion";
+import { about } from "@/lib/portfolio-data";
+import { Icon } from "@/lib/icons";
 
 export function AboutSection() {
   return (
     <motion.section 
       id="about" 
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
+      initial={false}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
       className="mx-auto max-w-5xl py-24 md:py-32"
     >
       <div className="mb-12 flex items-center whitespace-nowrap">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground flex items-center">
+        <h2 className="text-4xl md:text-5xl font-black text-foreground flex items-center tracking-tight">
           <span className="mr-4 font-mono text-xl md:text-2xl font-normal text-primary">01.</span>
           About Me
         </h2>
         <div className="ml-8 h-px w-full max-w-xs bg-card-border" />
       </div>
 
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 md:gap-16">
-        <div className="lg:col-span-3 text-lg text-secondary leading-relaxed space-y-6">
-          <p>
-            Hello! My name is {about.name} and {about.description}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
+        
+        {/* Main Bio Card (Spans 2 columns) */}
+        <motion.div 
+          className="glass-panel md:col-span-2 md:row-span-2 rounded-3xl p-8 md:p-10 flex flex-col justify-center relative overflow-hidden group"
+          initial={false}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <div className="hidden md:block absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-[60px] transition-all duration-500 group-hover:bg-primary/20" />
+           <p className="text-xl text-secondary leading-relaxed relative z-10">
+            {about.description}
           </p>
-          <p>
-            {about.notableExperiences.length > 0 ? "Fast-forward to today, and I have had the privilege of working at " : ""}
-            {about.notableExperiences.map((experience, index) => (
-              <a key={experience.name} className="font-medium text-primary hover:text-accent transition-colors duration-300" href={experience.href} rel="noopener noreferrer" target="_blank">
-                {experience.displayText}
-                {index === about.notableExperiences.length - 1 ? "." : ","}
-              </a>
-            ))}
-            My main focus these days is building accessible, inclusive products and digital experiences at{" "}
-            <a className="font-medium text-primary hover:text-accent transition-colors duration-300 relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-primary after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:duration-300" href={about.currentExperience.href} rel="noopener noreferrer" target="_blank">
-              {about.currentExperience.name}
-            </a>{" "}
-            for a variety of clients.
-          </p>
-          <p>Here are a few technologies I have been working with recently:</p>
-          
-          <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
-            {about.skills.map((skill, index) => (
-              <motion.li 
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                key={skill} 
-                className="flex items-center gap-2 rounded-full border border-card-border bg-card-bg/50 px-4 py-2 text-sm font-mono text-foreground backdrop-blur-sm transition-colors hover:border-primary/50 hover:bg-primary/5"
-              >
-                <span className="text-primary text-xs">▹</span>
-                {skill}
-              </motion.li>
+        </motion.div>
+
+        {/* Profile Image Card */}
+        <motion.div 
+          className="glass-panel rounded-[1.8rem] p-2 flex items-center justify-center relative overflow-hidden group"
+          initial={false}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="absolute inset-0 bg-primary/40 mix-blend-overlay z-10 transition-opacity duration-300 group-hover:opacity-0" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src="/images/pic.jpg" 
+            alt={about.name} 
+            className="w-full h-full object-cover rounded-2xl grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110" 
+          />
+        </motion.div>
+
+        {/* Skills Card (Spans 3 columns) */}
+        <motion.div 
+          className="glass-panel md:col-span-3 rounded-3xl p-8 md:p-10"
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <h3 className="text-2xl font-bold text-foreground mb-8 flex items-center gap-4">
+             <span className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary"><Icon name="external" /></span>
+             Recent Technologies
+          </h3>
+          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {about.skills.map((skill, i) => (
+              <li key={i} className="flex items-center gap-3 text-secondary font-mono text-sm p-4 rounded-2xl bg-background/50 border border-card-border/50 hover:border-primary/50 hover:text-primary transition-colors cursor-default hover:-translate-y-1 shadow-sm">
+                <span className="text-primary text-lg">▹</span> {skill}
+              </li>
             ))}
           </ul>
-        </div>
-        
-        <div className="lg:col-span-2 relative max-w-[300px] mx-auto w-full group">
-          <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:-translate-x-2">
-            <div className="absolute inset-0 bg-primary/20 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-0 z-10" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
-              src="/images/pic.jpg" 
-              alt="Headshot" 
-              className="w-full h-auto object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
-            />
-          </div>
-          <div className="absolute inset-0 rounded-xl border-2 border-primary translate-x-5 translate-y-5 -z-10 transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3" />
-        </div>
+        </motion.div>
+
       </div>
     </motion.section>
   );

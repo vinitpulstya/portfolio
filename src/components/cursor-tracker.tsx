@@ -1,56 +1,92 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useSpring } from "framer-motion";
 
 export function CursorTracker() {
   const [mounted, setMounted] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isFinePointer, setIsFinePointer] = useState(false);
+
+  const mouseX = useSpring(0, { stiffness: 500, damping: 28, mass: 0.5 });
+  const mouseY = useSpring(0, { stiffness: 500, damping: 28, mass: 0.5 });
 
   useEffect(() => {
     setMounted(true);
+    setIsFinePointer(window.matchMedia("(pointer: fine)").matches);
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || !isFinePointer) return;
+    
     const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
       if (!isVisible) setIsVisible(true);
     };
 
     const handleMouseLeave = () => setIsVisible(false);
 
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        target.tagName.toLowerCase() === 'a' || 
+        target.tagName.toLowerCase() === 'button' ||
+        target.closest('a') || 
+        target.closest('button')
+      ) {
+        setIsHovering(true);
+      } else {
+        setIsHovering(false);
+      }
+    };
+
     window.addEventListener("mousemove", updateMousePosition);
     document.body.addEventListener("mouseleave", handleMouseLeave);
+    document.body.addEventListener("mouseover", handleMouseOver);
 
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
       document.body.removeEventListener("mouseleave", handleMouseLeave);
+      document.body.removeEventListener("mouseover", handleMouseOver);
     };
-  }, [isVisible, mounted]);
+  }, [isFinePointer, isVisible, mounted, mouseX, mouseY]);
 
-  if (!mounted) return null;
+  if (!mounted || !isFinePointer) return null;
 
   return (
     <>
+      {/* Inner Dot */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-50 h-4 w-4 rounded-full bg-primary mix-blend-difference hidden md:block"
-        animate={{
-          x: mousePosition.x - 8,
-          y: mousePosition.y - 8,
+        className="pointer-events-none fixed top-0 left-0 z-[100] h-2 w-2 rounded-full bg-primary hidden md:block mix-blend-difference"
+        style={{
+          x: mouseX,
+          y: mouseY,
+          translateX: "-50%",
+          translateY: "-50%",
           opacity: isVisible ? 1 : 0,
         }}
-        transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
       />
+      {/* Outer Glow / Lens Ring */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-40 hidden h-64 w-64 rounded-full bg-primary/10 blur-[80px] md:block"
-        animate={{
-          x: mousePosition.x - 128,
-          y: mousePosition.y - 128,
-          opacity: isVisible ? 0.6 : 0,
+        className="pointer-events-none fixed top-0 left-0 z-[99] rounded-full hidden md:block"
+        style={{
+          x: mouseX,
+          y: mouseY,
+          translateX: "-50%",
+          translateY: "-50%",
+          opacity: isVisible ? (isHovering ? 0.8 : 0.4) : 0,
         }}
-        transition={{ type: "tween", ease: "linear", duration: 0.1 }}
+        animate={{
+          scale: isHovering ? 1.5 : 1,
+          width: isHovering ? "64px" : "32px",
+          height: isHovering ? "64px" : "32px",
+          backgroundColor: isHovering ? "rgba(139, 92, 246, 0.15)" : "rgba(139, 92, 246, 0)",
+          border: isHovering ? "1px solid transparent" : "2px solid var(--primary)",
+          backdropFilter: isHovering ? "blur(4px)" : "none",
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
       />
     </>
   );

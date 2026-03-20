@@ -6,78 +6,88 @@ import { motion } from "framer-motion";
 
 export function ProjectsSection() {
   return (
-    <motion.section 
-      id="projects"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
-      className="mx-auto max-w-5xl py-24 md:py-32"
-    >
-      <div className="mb-12 flex items-center whitespace-nowrap">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground flex items-center">
+    <section id="projects" className="mx-auto max-w-6xl py-24 md:py-32">
+      <motion.div 
+        className="mb-20 flex items-center whitespace-nowrap"
+        initial={false}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="text-3xl md:text-5xl font-black text-foreground flex items-center tracking-tight">
           <span className="mr-4 font-mono text-xl md:text-2xl font-normal text-primary">03.</span>
           Some Things I&apos;ve Built
         </h2>
         <div className="ml-8 h-px w-full max-w-xs bg-card-border" />
+      </motion.div>
+
+      <div className="flex flex-col gap-32">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.name} project={project} index={index} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ProjectCard({ project, index }: { project: any; index: number }) {
+  const isEven = index % 2 === 0;
+
+  return (
+    <motion.div 
+      initial={false}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`relative grid grid-cols-1 md:grid-cols-12 gap-8 items-center ${!isEven ? 'rtl' : ''}`}
+    >
+      {/* Project Image */}
+      <div 
+        className={`relative z-10 col-span-1 md:col-span-7 h-[220px] md:h-[350px] w-full rounded-3xl overflow-hidden glass-panel group ${!isEven ? 'md:col-start-6 md:row-start-1' : ''}`}
+        style={{ direction: 'ltr' }}
+      >
+        <div className="absolute inset-0 bg-primary/20 mix-blend-overlay transition-all duration-500 group-hover:opacity-0 z-20" />
+        <a href={project.externalLink} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src={project.imageSrc} 
+            alt={project.name} 
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+          />
+        </a>
       </div>
 
-      <ul className="m-0 list-none p-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project, index) => (
-          <motion.li 
-            key={project.name}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="group relative flex flex-col justify-between rounded-xl bg-card-bg border border-card-border shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
-          >
-            {/* Image Section */}
-            <div className="relative h-48 w-full overflow-hidden border-b border-card-border">
-              <div className="absolute inset-0 bg-primary/20 mix-blend-overlay transition-opacity duration-300 group-hover:opacity-0 z-10" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
-                src={project.imageSrc} 
-                alt={project.name} 
-                className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
-              />
-            </div>
+      {/* Project Content */}
+      <div 
+        className={`relative z-20 col-span-1 md:col-span-6 flex flex-col justify-center ${isEven ? 'md:col-start-7 md:-ml-12 text-left md:text-right md:items-end' : 'md:col-start-1 md:-mr-12 text-left md:items-start'} row-start-1`}
+        style={{ direction: 'ltr' }}
+      >
+        <p className="font-mono text-sm text-primary mb-2">Featured Project</p>
+        <h3 className="text-3xl md:text-4xl font-black text-foreground mb-6 hover:text-primary transition-colors">
+          <a href={project.externalLink} target="_blank" rel="noopener noreferrer">{project.name}</a>
+        </h3>
+        
+        <div className="glass-panel p-6 md:p-8 rounded-2xl shadow-xl w-full">
+          <p className="text-lg text-secondary leading-relaxed">
+            {project.description}
+          </p>
+        </div>
 
-            {/* Content Section */}
-            <div className="flex flex-col flex-grow p-6 z-20 bg-card-bg">
-              <div className="flex justify-between items-center mb-4 relative z-30">
-                <span className="font-mono text-sm text-primary">Featured Project</span>
-                <div className="flex items-center gap-3 text-secondary">
-                  <a href={project.github} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors p-1">
-                    <span className="inline-block w-5 h-5 [&_svg]:w-5 [&_svg]:h-5"><Icon name="github" /></span>
-                  </a>
-                  <a href={project.externalLink} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors p-1">
-                    <span className="inline-block w-5 h-5 [&_svg]:w-5 [&_svg]:h-5"><Icon name="external" /></span>
-                  </a>
-                </div>
-              </div>
+        <ul className={`flex flex-wrap gap-4 font-mono text-sm text-secondary mt-6 ${isEven ? 'md:justify-end' : ''}`}>
+          {project.tools.map((tool: string) => (
+            <li key={tool} className="rounded-full bg-primary/10 px-4 py-2 text-primary whitespace-nowrap">
+              {tool}
+            </li>
+          ))}
+        </ul>
 
-              <h3 className="mb-3 text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                <a href={project.externalLink} rel="noopener noreferrer" target="_blank" className="before:absolute before:inset-0 z-20">
-                  {project.name}
-                </a>
-              </h3>
-
-              <p className="text-secondary text-sm leading-relaxed mb-6 flex-grow">
-                {project.description}
-              </p>
-
-              <ul className="flex flex-wrap gap-2 text-xs font-mono text-secondary mt-auto relative z-30">
-                {project.tools.map((tool) => (
-                  <li key={tool} className="rounded-full bg-primary/10 px-3 py-1 text-primary">
-                    {tool}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.li>
-        ))}
-      </ul>
-    </motion.section>
+        <div className={`flex items-center gap-4 mt-8 ${isEven ? 'md:justify-end' : ''}`}>
+          <a href={project.github} target="_blank" rel="noreferrer" className="text-secondary hover:text-primary transition-colors hover:-translate-y-1 block p-2">
+            <span className="inline-block w-6 h-6 [&_svg]:w-6 [&_svg]:h-6"><Icon name="github" /></span>
+          </a>
+          <a href={project.externalLink} target="_blank" rel="noreferrer" className="text-secondary hover:text-primary transition-colors hover:-translate-y-1 block p-2">
+            <span className="inline-block w-6 h-6 [&_svg]:w-6 [&_svg]:h-6"><Icon name="external" /></span>
+          </a>
+        </div>
+      </div>
+    </motion.div>
   );
 }
