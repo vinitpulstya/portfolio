@@ -32,7 +32,7 @@ export function BioSection() {
   return (
     <section 
       id="bio" 
-      className="relative flex min-h-[100vh] flex-col items-center justify-center pt-24 text-center overflow-visible"
+      className="relative flex min-h-screen flex-col items-center justify-center pt-24 text-center overflow-visible"
     >
       <motion.div 
         className="hidden md:block absolute left-1/4 top-1/4 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 mix-blend-screen blur-[120px]"
