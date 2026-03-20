@@ -1,10 +1,10 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+# Build output
+/.next/
+/out/
+/dist/
+/tmp/
 
 # Node
 /node_modules
@@ -29,13 +29,16 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
 testem.log
 /typings
+
+# Next.js
+/.next/cache
+next-env.d.ts
 
 # System files
 .DS_Store

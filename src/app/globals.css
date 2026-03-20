@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background-base: #09090b;
+  --color-foreground-base: #f8fafc;
+  --color-primary-base: #8B5CF6;
+  --color-secondary-base: #94a3b8;
+  --color-accent-base: #06B6D4;
+  --color-card-bg-base: #111116;
+  --color-card-border-base: #1e1e24;
+  --color-nav-bg-base: rgba(9, 9, 11, 0.7);
+}
+
+@layer base {
+  :root {
+    --background: #fafafa;
+    --foreground: #0f172a;
+    --primary: #8B5CF6; 
+    --secondary: #64748b;
+    --accent: #06B6D4;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    --nav-bg: rgba(250, 250, 250, 0.75);
+    --ambient-glow: rgba(139, 92, 246, 0.15);
+  }
+
+  .dark {
+    --background: var(--color-background-base);
+    --foreground: var(--color-foreground-base);
+    --primary: var(--color-primary-base);
+    --secondary: var(--color-secondary-base);
+    --accent: var(--color-accent-base);
+    --card-bg: var(--color-card-bg-base);
+    --card-border: var(--color-card-border-base);
+    --nav-bg: var(--color-nav-bg-base);
+    --ambient-glow: rgba(139, 92, 246, 0.08);
+  }
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-nav-bg: var(--nav-bg);
+  --color-ambient-glow: var(--ambient-glow);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    font-size: 62.5%; /* 1rem = 10px */
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* Modern ambient background noise / glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, var(--ambient-glow) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  a:hover {
+    color: var(--primary);
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--card-border);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 60%;
+  }
+}
+@media (max-width: 900px) {
+  html {
+    font-size: 55%; 
+  }
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 68%; /* Massive boost to mobile typograph */
+  }
+}
